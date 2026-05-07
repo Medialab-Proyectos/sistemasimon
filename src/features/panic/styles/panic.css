@@ -67,7 +67,8 @@
 
   .panic-table-section__body {
     flex: 1;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 0 var(--spacing-6);
   }
 

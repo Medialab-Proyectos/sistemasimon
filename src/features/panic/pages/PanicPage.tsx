@@ -74,6 +74,7 @@ const navItems: SimonModuleNavItem[] = [
   { id: "administrative", iconName: "settings-2", label: "Administrativo", expandable: true },
   { id: "reports", iconName: "chart-column", label: "Reportes", expandable: true },
   { id: "settings", iconName: "settings", label: "Ajustes", expandable: true },
+  { id: "users", iconName: "user", label: "Usuarios" },
   { id: "panic", iconName: "alert-triangle", label: "Botón de pánico", selected: true },
 ];
 
@@ -100,16 +101,6 @@ function buildFullColumns(onGestionar: (row: PanicRow) => void): DataTableColumn
     },
   ];
 }
-
-/* ── Compact table columns (panel open) ── */
-
-const compactColumns: DataTableColumn<PanicRow>[] = [
-  { id: "imei", header: "IMEI", render: (r) => <span className="panic-table__imei">{r.imei}</span> },
-  { id: "placa", header: "Placa", render: (r) => r.placa },
-  { id: "alertas", header: "Alertas", render: (r) => String(r.alertas) },
-  { id: "contacto", header: "Contacto", render: (r) => r.contacto },
-  { id: "telefono", header: "Teléfono", render: (r) => r.telefono },
-];
 
 /* ── Page ── */
 
@@ -199,7 +190,7 @@ export function PanicPage() {
           <div className="panic-table-section__body">
             <TableLayout>
               <DataTable
-                columns={selectedRow ? compactColumns : fullColumns}
+                columns={fullColumns}
                 rows={filteredRows}
                 getRowKey={(r) => r.id}
                 emptyState="No hay registros para mostrar."

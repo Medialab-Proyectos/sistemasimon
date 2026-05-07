@@ -10,8 +10,9 @@ require("./package.json");
 
 export default defineConfig({
   server: {
-    port: 5177,
-    strictPort: true,
+    host: '127.0.0.1',
+    port: 3000,
+    strictPort: false,
     cors: true,
     headers: {
       "Access-Control-Allow-Origin": "*",

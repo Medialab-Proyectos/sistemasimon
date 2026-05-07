@@ -19,7 +19,8 @@
       "Bash(npm run:*)",
       "Bash(curl -s -o figma-panic-light.png \"https://www.figma.com/api/mcp/asset/11ad6166-8b67-48e4-8e9c-6f427cb2c5c4\")",
       "Bash(curl -s -o figma-panic-dark.png \"https://www.figma.com/api/mcp/asset/2c10b4cb-36a8-46cb-a6df-886fe5ab7a04\")",
-      "Bash(curl -s -o figma-panic-table.png \"https://www.figma.com/api/mcp/asset/384c68a2-d803-4655-8354-e0e175184bc1\")"
+      "Bash(curl -s -o figma-panic-table.png \"https://www.figma.com/api/mcp/asset/384c68a2-d803-4655-8354-e0e175184bc1\")",
+      "Bash(find:*)"
     ]
   }
 }
