@@ -1,0 +1,105 @@
+/*
+ * Design System SM — TimePicker Styles
+ *
+ * Figma specs:
+ *   Container: inline-flex, gap 8px
+ *   Hour/Minute scrollers: 56px wide, border neutral-200, radius-xs
+ *   Selected value: brand-400 bg, white text, semibold
+ *   Period selector: 2-button toggle (AM/PM), brand-400 active
+ *   Up/Down arrows: neutral-400, hover neutral-600
+ */
+
+@layer components {
+  .ds-time-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-family: var(--font-body);
+  }
+
+  /* ── Spinner column ── */
+  .ds-time-picker__spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 56px;
+    border-radius: var(--radius-xs);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    overflow: hidden;
+  }
+
+  .ds-time-picker__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-neutral-400);
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .ds-time-picker__arrow:hover {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-600);
+  }
+
+  .ds-time-picker__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-white);
+    background: var(--color-brand-400);
+  }
+
+  /* ── Separator ── */
+  .ds-time-picker__sep {
+    font-size: var(--text-body-l-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  /* ── Period toggle ── */
+  .ds-time-picker__period {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+    border: var(--border-xs) solid var(--color-neutral-200);
+  }
+
+  .ds-time-picker__period-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 40px;
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-600);
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .ds-time-picker__period-btn + .ds-time-picker__period-btn {
+    border-top: var(--border-xs) solid var(--color-neutral-200);
+  }
+
+  .ds-time-picker__period-btn--active {
+    background: var(--color-brand-400);
+    color: var(--color-white);
+  }
+}

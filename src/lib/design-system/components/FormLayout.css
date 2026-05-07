@@ -1,0 +1,145 @@
+/*
+ * Design System SM — FormLayout Template Styles
+ *
+ * Figma specs:
+ *   Form view: full-width white panel, radius-lg
+ *   Header: back button + title/breadcrumb + right actions
+ *   Body: description, form sections with 2-column grid
+ *   Sections: label (H6 regular, neutral-400) + inputs grid
+ *   Footer: cancel (ghost) + submit (primary/disabled)
+ *   Gap: 40px between major sections, 16px between fields
+ */
+
+@layer components {
+  .ds-form-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-8);
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    padding: var(--spacing-6);
+    font-family: var(--font-body);
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* ── Header ── */
+  .ds-form-layout__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+  }
+
+  .ds-form-layout__back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: var(--border-sm) solid var(--color-brand-400);
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-brand-400);
+    flex-shrink: 0;
+    padding: 0;
+    transition: background 0.15s ease;
+  }
+
+  .ds-form-layout__back:hover {
+    background: var(--color-brand-50);
+  }
+
+  .ds-form-layout__header-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-form-layout__title {
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  /* ── Breadcrumb ── */
+  .ds-form-layout__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    flex-wrap: wrap;
+  }
+
+  .ds-form-layout__breadcrumb-item {
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-form-layout__breadcrumb-sep {
+    color: var(--color-neutral-400);
+  }
+
+  .ds-form-layout__breadcrumb-current {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-800);
+  }
+
+  .ds-form-layout__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+  }
+
+  /* ── Description ── */
+  .ds-form-layout__description {
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+  }
+
+  /* ── Form body ── */
+  .ds-form-layout__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-7);
+  }
+
+  /* ── Section ── */
+  .ds-form-layout__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .ds-form-layout__section-title {
+    font-size: var(--text-h6-size);
+    line-height: var(--text-h6-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-form-layout__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+
+  .ds-form-layout__grid--full {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Footer ── */
+  .ds-form-layout__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

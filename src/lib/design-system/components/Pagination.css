@@ -1,0 +1,80 @@
+/*
+ * Design System SM — Pagination Styles
+ *
+ * Figma specs:
+ *   Items: 40x40, radius-sm (8px), gap 8px
+ *   Enable: white bg, neutral-400 text
+ *   Hover: brand-50 bg, brand-800 text
+ *   Selected: brand-400 bg, brand-950 text
+ *   Disabled: neutral-100 bg, neutral-400 text
+ */
+
+@layer components {
+  .ds-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .ds-pagination__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 40px;
+    border-radius: 0;
+    border: var(--border-xs) solid var(--ds-color-border);
+    margin-right: -1px;
+    background: var(--ds-color-surface);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text-muted);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0;
+  }
+
+  .ds-pagination__item:hover:not(:disabled):not(.ds-pagination__item--selected) {
+    background: var(--ds-color-surface-hover);
+    color: var(--ds-color-brand-text);
+  }
+
+  .ds-pagination__item--selected {
+    background: var(--color-brand-400);
+    border-color: var(--color-brand-400);
+    color: var(--color-neutral-900);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .ds-pagination__item:disabled {
+    background: var(--ds-color-surface-alt);
+    color: var(--ds-color-text-muted);
+    cursor: not-allowed;
+  }
+
+  .ds-pagination__arrow {
+    width: 60px;
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-pagination__arrow:first-child {
+    border-radius: var(--radius-xs) 0 0 var(--radius-xs);
+  }
+
+  .ds-pagination__arrow:last-child {
+    border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  }
+
+  .ds-pagination__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    color: var(--ds-color-text-muted);
+  }
+}

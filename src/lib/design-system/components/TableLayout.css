@@ -1,0 +1,100 @@
+/*
+ * Design System SM — TableLayout Template Styles
+ *
+ * Figma specs:
+ *   Table view: full-width white panel, radius-lg
+ *   Header: title + search + filter buttons + "Crear" action
+ *   Tabs: optional tab bar below header
+ *   Table: full-width with header row, data rows, borders
+ *   Footer: pagination + row count info
+ */
+
+@layer components {
+  .ds-table-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-radius: var(--radius-lg);
+    background: var(--ds-color-surface);
+    font-family: var(--font-body);
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .ds-table-layout__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-6);
+    flex-shrink: 0;
+  }
+
+  .ds-table-layout__title {
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--ds-color-text);
+    flex-shrink: 0;
+  }
+
+  .ds-table-layout__search {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-table-layout__filters {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+  }
+
+  .ds-table-layout__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+  }
+
+  /* ── Tabs ── */
+  .ds-table-layout__tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 var(--spacing-6);
+    border-bottom: var(--border-xs) solid var(--ds-color-border);
+    flex-shrink: 0;
+  }
+
+  /* ── Table container ── */
+  .ds-table-layout__table {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+  }
+
+  .ds-table-layout__table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* ── Footer ── */
+  .ds-table-layout__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-4) var(--spacing-6);
+    border-top: var(--border-xs) solid var(--ds-color-border);
+    flex-shrink: 0;
+  }
+
+  .ds-table-layout__row-count {
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text-muted);
+  }
+}

@@ -1,0 +1,61 @@
+@layer components {
+  .ds-filter-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-4);
+    width: 100%;
+  }
+
+  .ds-filter-bar__controls {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--spacing-3);
+    align-items: start;
+  }
+
+  .ds-filter-bar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+  }
+
+  .ds-filter-bar .ds-select__label {
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .ds-filter-bar .ds-select__value {
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+  }
+
+  @media (max-width: 1180px) {
+    .ds-filter-bar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .ds-filter-bar__controls {
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+    }
+
+    .ds-filter-bar__actions {
+      justify-content: flex-end;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .ds-filter-bar__controls {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-filter-bar__actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,194 @@
+/*
+ * Design System SM — MultiSelect Styles
+ *
+ * Figma specs:
+ *   Extends Select pattern with multi-value support
+ *   States: enable, completed, error, success, disabled
+ *   Trigger: shows comma-separated selected labels, same as Select
+ *   Dropdown: checkbox + label per option
+ *   Checkbox: 20×20 brand-400 bg, 2px radius, white check icon
+ */
+
+@layer components {
+  .ds-multi-select {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    width: 100%;
+    font-family: var(--font-body);
+    position: relative;
+  }
+
+  /* ── Label ── */
+  .ds-multi-select__label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+  }
+
+  .ds-multi-select__label {
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+  }
+
+  .ds-multi-select__required {
+    color: var(--color-error-500);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* ── Trigger (button, same as Select) ── */
+  .ds-multi-select__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--ds-color-border);
+    background: var(--ds-color-surface);
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .ds-multi-select--open .ds-multi-select__trigger {
+    box-shadow: 0 0 0 4px var(--ds-color-focus-ring);
+  }
+
+  .ds-multi-select--error .ds-multi-select__trigger {
+    border-color: var(--color-error-500);
+  }
+
+  .ds-multi-select--error.ds-multi-select--open .ds-multi-select__trigger {
+    box-shadow: 0 0 0 4px var(--color-error-50);
+  }
+
+  .ds-multi-select--success .ds-multi-select__trigger {
+    border-color: var(--color-success-500);
+  }
+
+  .ds-multi-select--success.ds-multi-select--open .ds-multi-select__trigger {
+    box-shadow: 0 0 0 4px var(--color-success-50);
+  }
+
+  .ds-multi-select--disabled .ds-multi-select__trigger {
+    background: var(--ds-color-surface-alt);
+    border-color: var(--ds-color-border);
+    cursor: not-allowed;
+  }
+
+  /* ── Value text ── */
+  .ds-multi-select__value {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ── Placeholder ── */
+  .ds-multi-select__placeholder {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    color: var(--ds-color-text-muted);
+  }
+
+  /* ── Chevron ── */
+  .ds-multi-select__chevron {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--ds-color-text-muted);
+  }
+
+  /* ── Dropdown ── */
+  .ds-multi-select__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    margin-top: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--ds-color-border);
+    background: var(--ds-color-surface);
+    box-shadow: var(--shadow-sm);
+    max-height: 240px;
+    overflow: hidden auto;
+  }
+
+  .ds-multi-select__option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--ds-color-text);
+    background: var(--ds-color-surface);
+    border: none;
+    border-bottom: var(--border-xs) solid var(--ds-color-border);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background 0.15s ease;
+  }
+
+  .ds-multi-select__option:last-child {
+    border-bottom: none;
+  }
+
+  .ds-multi-select__option:hover {
+    background: var(--ds-color-surface-hover);
+  }
+
+  /* ── Checkbox ── */
+  .ds-multi-select__checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: var(--border-xs) solid var(--ds-color-border-strong);
+    background: var(--ds-color-surface);
+    flex-shrink: 0;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    color: var(--color-white);
+  }
+
+  .ds-multi-select__checkbox--checked {
+    background: var(--color-brand-400);
+    border-color: var(--color-brand-400);
+  }
+
+  /* ── Support text ── */
+  .ds-multi-select__support {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-multi-select--error .ds-multi-select__support {
+    color: var(--color-error-800);
+  }
+
+  .ds-multi-select--success .ds-multi-select__support {
+    color: var(--color-success-800);
+  }
+}

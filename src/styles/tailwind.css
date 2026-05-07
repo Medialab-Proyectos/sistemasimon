@@ -1,0 +1,430 @@
+@import "tailwindcss";
+@import "../lib/design-system/index.css";
+
+@source "../**/*.{ts,tsx,js,jsx,html}";
+
+@theme {
+  /* Font stack — Museo Sans (design system) with system fallbacks */
+  --font-sans: "Museo Sans", Roboto, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── Semantic color aliases ──
+   * Map design-system tokens to application-level semantics.
+   * Components use these aliases; tokens.css owns the raw values.
+   */
+  --color-background: var(--color-white);
+  --color-surface: var(--color-brand-50);
+  --color-surface-elevated: var(--color-brand-50);
+  --color-border-subtle: var(--color-neutral-200);
+  --color-divider: var(--color-neutral-200);
+
+  --color-primary: var(--color-brand-800);
+  --color-primary-hover: var(--color-brand-400);
+  --color-primary-active: var(--color-brand-700);
+  --color-secondary: #007a9b;
+
+  --color-text: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-500);
+  --color-text-disabled: var(--color-neutral-300);
+  --color-text-on-primary: var(--color-white);
+  --color-primary-foreground: var(--color-white);
+
+  --color-success: var(--color-success-500);
+  --color-success-bg: var(--color-success-50);
+  --color-warning: var(--color-warning-500);
+  --color-warning-bg: var(--color-warning-50);
+  --color-error: var(--color-error-500);
+  --color-error-bg: var(--color-error-50);
+  --color-info: #29b6f6;
+  --color-info-bg: #e3f2fd;
+
+  --color-menu-active-start: var(--color-brand-400);
+  --color-menu-active-end: var(--color-brand-50);
+  --color-menu-hover-start: var(--color-brand-400);
+  --color-menu-hover-end: var(--color-brand-50);
+}
+
+@layer base {
+  .maplibregl-ctrl-group {
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-background);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+  }
+
+  .maplibregl-ctrl-group button {
+    background: transparent;
+    color: var(--color-text);
+  }
+
+  .maplibregl-ctrl-group button:hover {
+    background: color-mix(in oklab, var(--color-surface-elevated) 70%, transparent);
+  }
+
+  .maplibregl-ctrl-group button:focus {
+    outline: 2px solid color-mix(in oklab, var(--color-primary) 45%, transparent);
+    outline-offset: -2px;
+  }
+
+  .maplibregl-ctrl-group button + button {
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .maplibregl-ctrl .maplibregl-ctrl-attrib {
+    background: color-mix(in oklab, var(--color-background) 80%, transparent);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .maplibregl-ctrl .maplibregl-ctrl-attrib a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .maplibregl-ctrl-geocoder {
+    border: 1px solid var(--color-border-subtle) !important;
+    background: color-mix(in oklab, var(--color-background) 92%, transparent) !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+    border-radius: 1rem !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .maplibregl-ctrl-geocoder--input {
+    color: var(--color-text) !important;
+    font-size: 0.875rem !important;
+  }
+
+  .maplibregl-ctrl-geocoder--input::placeholder {
+    color: var(--color-text-muted) !important;
+  }
+
+  .maplibregl-ctrl-geocoder--suggestion {
+    color: var(--color-text) !important;
+  }
+
+  .maplibregl-ctrl-geocoder--suggestion-title {
+    color: var(--color-text) !important;
+  }
+
+  .maplibregl-ctrl-geocoder--suggestion-address {
+    color: var(--color-text-muted) !important;
+  }
+}
+
+@layer base {
+  .scada-scrollbar {
+    scrollbar-color: var(--color-primary) transparent;
+    scrollbar-width: thin;
+  }
+
+  .scada-scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scada-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scada-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border: 4px solid transparent;
+    background-clip: content-box;
+    border-radius: 9999px;
+  }
+
+  .scada-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-hover);
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer base {
+  :root {
+    --scada-radius-lg: 1.25rem;
+    --scada-shadow: 0 10px 20px -12px rgb(0 0 0 / 0.25);
+  }
+}
+
+@layer components {
+  .scada-kpis {
+    @apply grid grid-cols-4 gap-4;
+  }
+
+  .scada-kpi-card {
+    @apply rounded-2xl border border-border-subtle bg-[var(--scada-card-bg)] px-4 py-3 shadow-sm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scada-kpi-card::before {
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+    top: 0.65rem;
+    bottom: 0.65rem;
+    width: 0.125rem;
+    border-radius: 9999px;
+    background: var(--scada-kpi-accent, var(--color-divider));
+  }
+
+  .scada-kpi-card--danger {
+    --scada-kpi-accent: var(--color-error);
+  }
+
+  .scada-kpi-card--success {
+    --scada-kpi-accent: var(--color-success);
+  }
+
+  .scada-kpi-card--muted {
+    --scada-kpi-accent: color-mix(in oklab, var(--color-text-muted) 70%, transparent);
+  }
+
+  .scada-kpi-card--info {
+    --scada-kpi-accent: var(--color-info);
+  }
+
+  .scada-kpi-card__top {
+    @apply flex items-start justify-between gap-3;
+  }
+
+  .scada-kpi-card__label {
+    @apply text-xs font-semibold tracking-wide text-text-muted;
+  }
+
+  .scada-kpi-card__value {
+    @apply text-2xl font-bold leading-tight text-text;
+  }
+
+  .scada-kpi-card__meta {
+    @apply mt-1 flex items-center gap-2 text-xs text-text-muted;
+  }
+
+  .scada-kpi-icon {
+    @apply grid h-8 w-8 place-items-center rounded-full border border-border-subtle bg-[color-mix(in_oklab,var(--color-surface-elevated)_75%,transparent)] text-text;
+  }
+
+  .scada-content-grid {
+    @apply grid grid-cols-[1fr_360px] gap-4;
+  }
+
+  .scada-map-surface {
+    @apply relative overflow-hidden rounded-[var(--scada-radius-lg)] border border-[var(--color-border-subtle)] bg-[var(--color-surface)] shadow-[var(--scada-shadow)];
+  }
+
+  .scada-map-overlay {
+    @apply absolute left-4 top-4 z-10 flex items-center gap-3 rounded-2xl border border-[var(--color-border-subtle)] bg-[color:color-mix(in_oklab,var(--color-background)_82%,transparent)] px-3 py-2 shadow-sm backdrop-blur;
+  }
+
+  .scada-right-panel {
+    @apply overflow-hidden rounded-[var(--scada-radius-lg)] border border-border-subtle bg-[var(--scada-panel-bg)] shadow-[var(--scada-shadow)];
+  }
+
+  .scada-right-panel__header {
+    @apply border-b border-border-subtle bg-[var(--scada-panel-bg)] p-3;
+  }
+
+  .scada-search {
+    @apply w-full rounded-xl border border-border-subtle bg-[var(--scada-input-bg)] px-3 py-2 text-sm text-text outline-none transition;
+  }
+
+  .scada-search:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 25%, transparent);
+    @apply border-[var(--color-primary)];
+  }
+
+  .scada-right-panel__list {
+    @apply h-full overflow-auto p-3;
+  }
+
+  .scada-device-card {
+    @apply mb-3 rounded-2xl border border-border-subtle bg-[var(--scada-card-bg)] p-3 shadow-sm;
+  }
+
+  .scada-device-card__top {
+    @apply flex items-start justify-between gap-3;
+  }
+
+  .scada-device-card__title {
+    @apply text-sm font-extrabold text-text;
+  }
+
+  .scada-device-card__status {
+    @apply text-xs font-semibold;
+  }
+
+  .scada-chip {
+    @apply mt-2 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-semibold;
+  }
+
+  .scada-chip--danger {
+    @apply bg-[var(--color-error-bg)] text-[color:var(--color-error)];
+  }
+
+  .scada-chip--success {
+    @apply bg-[var(--color-success-bg)] text-[color:var(--color-success)];
+  }
+
+  .scada-chip--muted {
+    @apply bg-[color:color-mix(in_oklab,var(--color-divider)_35%,transparent)] text-[color:var(--color-text-muted)];
+  }
+
+  .scada-device-card__time {
+    @apply mt-1 text-[11px] text-text-muted;
+  }
+
+  .scada-pagination {
+    @apply flex items-center justify-between border-t border-border-subtle bg-[var(--scada-panel-bg)] px-3 py-2;
+  }
+
+  .scada-status-card {
+    @apply pointer-events-none absolute right-4 top-1/2 z-30 w-[420px] max-w-[min(440px,calc(100vw-24px))] -translate-y-1/2;
+  }
+
+  .scada-status-card__panel {
+    @apply pointer-events-auto overflow-hidden rounded-3xl border border-border-subtle bg-[var(--scada-panel-bg)] shadow-[var(--scada-shadow)];
+  }
+
+  .scada-status-card__header {
+    @apply flex items-start justify-between gap-3 border-b border-border-subtle px-4 py-3;
+  }
+
+  .scada-status-card__title {
+    @apply text-xl font-extrabold leading-tight text-text;
+  }
+
+  .scada-status-card__subtitle {
+    @apply mt-0.5 text-xs text-text-muted;
+  }
+
+  .scada-status-card__actions {
+    @apply flex items-center gap-2;
+  }
+
+  .scada-icon-btn {
+    @apply grid h-8 w-8 place-items-center rounded-full border border-border-subtle bg-[var(--scada-card-bg)] text-text transition;
+  }
+
+  .scada-icon-btn:hover {
+    @apply bg-[color-mix(in_oklab,var(--color-surface-elevated)_70%,transparent)];
+  }
+
+  .scada-status-card__body {
+    @apply max-h-[min(76vh,680px)] overflow-auto px-4 py-3;
+  }
+
+  .scada-section {
+    @apply mt-3;
+  }
+
+  .scada-section__title {
+    @apply flex items-center gap-2 text-sm font-extrabold text-text;
+  }
+
+  .scada-section__bar {
+    @apply h-4 w-1 rounded-full bg-primary;
+  }
+
+  .scada-location {
+    @apply rounded-2xl border border-border-subtle bg-[var(--scada-card-bg)] px-3 py-2;
+  }
+
+  .scada-location__label {
+    @apply text-xs font-semibold text-text-muted;
+  }
+
+  .scada-location__value {
+    @apply mt-0.5 text-sm font-medium text-text;
+  }
+
+  .scada-tiles {
+    @apply mt-2 grid grid-cols-2 gap-3;
+  }
+
+  .scada-tile {
+    @apply rounded-2xl border border-border-subtle bg-[var(--scada-card-bg)] px-3 py-2;
+  }
+
+  .scada-tile__label {
+    @apply text-xs text-text-muted;
+  }
+
+  .scada-tile__value {
+    @apply mt-0.5 flex items-center justify-between gap-2 text-sm font-semibold text-text;
+  }
+
+  .scada-pill {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold;
+  }
+
+  .scada-pill--success {
+    @apply border-[color-mix(in_oklab,var(--color-success)_55%,var(--color-border-subtle))] bg-[color-mix(in_oklab,var(--color-success-bg)_55%,transparent)] text-success;
+  }
+
+  .scada-pill--danger {
+    @apply border-[color-mix(in_oklab,var(--color-error)_55%,var(--color-border-subtle))] bg-[color-mix(in_oklab,var(--color-error-bg)_55%,transparent)] text-error;
+  }
+
+  .scada-pill--muted {
+    @apply border-border-subtle bg-[color-mix(in_oklab,var(--color-divider)_35%,transparent)] text-text-muted;
+  }
+
+  .scada-progress {
+    @apply mt-2 grid grid-cols-2 gap-3;
+  }
+
+  .scada-progress__row {
+    @apply rounded-2xl border border-border-subtle bg-[var(--scada-card-bg)] px-3 py-2;
+  }
+
+  .scada-progress__top {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .scada-progress__label {
+    @apply text-xs text-text-muted;
+  }
+
+  .scada-progress__value {
+    @apply text-xs font-semibold text-text;
+  }
+
+  .scada-progress__bar {
+    @apply mt-2 h-2 w-full overflow-hidden rounded-full bg-[color-mix(in_oklab,var(--color-divider)_40%,transparent)];
+  }
+
+  .scada-progress__fill {
+    @apply h-full rounded-full bg-primary;
+  }
+
+  .scada-status-card__footer {
+    @apply border-t border-border-subtle px-4 py-3;
+  }
+
+  .scada-footer-actions {
+    @apply grid grid-cols-2 gap-3;
+  }
+
+  .scada-btn {
+    @apply inline-flex h-11 items-center justify-center rounded-full px-4 text-sm font-extrabold transition;
+  }
+
+  .scada-btn--outline {
+    @apply border border-primary bg-transparent text-primary;
+  }
+
+  .scada-btn--outline:hover {
+    @apply bg-[color-mix(in_oklab,var(--color-primary)_15%,transparent)];
+  }
+
+  .scada-btn--solid {
+    @apply bg-primary text-white;
+  }
+
+  .scada-btn--solid:hover {
+    @apply bg-[var(--color-primary-active)];
+  }
+}
+
+

@@ -1,0 +1,137 @@
+/*
+ * Design System SM — Avatar Styles
+ *
+ * Figma specs:
+ *   Sizes: sm=28px, md=40px, lg=64px, xl=88px
+ *   Shape: circle (radius-full)
+ *   Background (initials/icon): brand-50
+ *   Text color (initials): brand-800
+ *   Status dot: positioned bottom-right
+ *     Disponible: brand-400 (#00F1C7)
+ *     Ocupado: error-400 (#FE6B6B)
+ *     Inactivo: warning-500 (#FAD900)
+ */
+
+@layer components {
+  .ds-avatar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--color-brand-50);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ── Sizes ── */
+  .ds-avatar--sm {
+    width: 28px;
+    height: 28px;
+    font-size: 0.625rem;  /* 10px */
+  }
+
+  .ds-avatar--md {
+    width: 40px;
+    height: 40px;
+    font-size: 0.875rem;  /* 14px */
+  }
+
+  .ds-avatar--lg {
+    width: 64px;
+    height: 64px;
+    font-size: 1.25rem;   /* 20px */
+  }
+
+  .ds-avatar--xl {
+    width: 88px;
+    height: 88px;
+    font-size: 1.75rem;   /* 28px */
+  }
+
+  /* ── Image ── */
+  .ds-avatar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+  }
+
+  /* ── Initials ── */
+  .ds-avatar__initials {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-800);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* ── Icon ── */
+  .ds-avatar__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-800);
+  }
+
+  .ds-avatar--sm .ds-avatar__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ds-avatar--md .ds-avatar__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ds-avatar--lg .ds-avatar__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ds-avatar--xl .ds-avatar__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* ── Status indicator ── */
+  .ds-avatar__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-white);
+  }
+
+  .ds-avatar--sm .ds-avatar__status {
+    width: 8px;
+    height: 8px;
+  }
+
+  .ds-avatar--md .ds-avatar__status {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ds-avatar--lg .ds-avatar__status {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ds-avatar--xl .ds-avatar__status {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ds-avatar__status--disponible {
+    background: var(--color-brand-400);
+  }
+
+  .ds-avatar__status--ocupado {
+    background: var(--color-error-400);
+  }
+
+  .ds-avatar__status--inactivo {
+    background: var(--color-warning-500);
+  }
+}

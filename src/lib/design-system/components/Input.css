@@ -1,0 +1,174 @@
+/*
+ * Design System SM — Input / TextArea Styles
+ *
+ * Figma specs:
+ *   Border radius: radius-sm (8px)
+ *   Padding: 16px horizontal, 8px vertical
+ *   Border: 1px neutral-200 default, 2px on focus/error/success
+ *   Font input: Body L (20px)
+ *   Font label: Body SM (12px) semibold
+ *   Focus: brand-400 border
+ *   Error: error-500 border
+ *   Success: success-500 border
+ */
+
+@layer components {
+  /* ── Wrapper ── */
+  .ds-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+
+  /* ── Label ── */
+  .ds-input__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-500);
+  }
+
+  /* ── Input container ── */
+  .ds-input {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ds-input:focus-within {
+    border-color: var(--color-brand-400);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-brand-400) 20%, transparent);
+  }
+
+  /* ── Input field ── */
+  .ds-input__field {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    min-width: 0;
+  }
+
+  .ds-input__field::placeholder {
+    color: var(--color-neutral-300);
+  }
+
+  /* ── TextArea ── */
+  .ds-textarea {
+    border: var(--border-xs) solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+  }
+
+  .ds-textarea::placeholder {
+    color: var(--color-neutral-300);
+  }
+
+  .ds-textarea:focus {
+    border-color: var(--color-brand-400);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-brand-400) 20%, transparent);
+  }
+
+  /* ── Icon slots ── */
+  .ds-input__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--color-neutral-400);
+  }
+
+  /* ── Status: Error ── */
+  .ds-input--error {
+    border-color: var(--color-error-500);
+  }
+
+  .ds-input--error:focus-within {
+    border-color: var(--color-error-500);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-error-500) 20%, transparent);
+  }
+
+  .ds-textarea.ds-input--error {
+    border-color: var(--color-error-500);
+  }
+
+  .ds-textarea.ds-input--error:focus {
+    border-color: var(--color-error-500);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-error-500) 20%, transparent);
+  }
+
+  /* ── Status: Success ── */
+  .ds-input--success {
+    border-color: var(--color-success-500);
+  }
+
+  .ds-input--success:focus-within {
+    border-color: var(--color-success-500);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-success-500) 20%, transparent);
+  }
+
+  .ds-textarea.ds-input--success {
+    border-color: var(--color-success-500);
+  }
+
+  .ds-textarea.ds-input--success:focus {
+    border-color: var(--color-success-500);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-success-500) 20%, transparent);
+  }
+
+  /* ── Status: Disabled ── */
+  .ds-input--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: var(--color-neutral-50);
+  }
+
+  .ds-textarea.ds-input--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: var(--color-neutral-50);
+  }
+
+  /* ── Helper text ── */
+  .ds-helper {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .ds-helper--default {
+    color: var(--color-neutral-400);
+  }
+
+  .ds-helper--error {
+    color: var(--color-error-500);
+  }
+
+  .ds-helper--success {
+    color: var(--color-success-500);
+  }
+}

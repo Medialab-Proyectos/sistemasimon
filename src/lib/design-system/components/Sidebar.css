@@ -1,0 +1,186 @@
+/*
+ * Design System SM — Sidebar Styles
+ *
+ * Figma specs:
+ *   Width: 268px (full) / 64px (collapsed)
+ *   Background: white
+ *   Border-right: 1px neutral-200
+ */
+
+@layer components {
+  .ds-sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 268px;
+    height: 100%;
+    background: var(--ds-color-surface);
+    border-right: 0;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width 0.2s ease;
+    padding: var(--spacing-6);
+    gap: var(--spacing-12);
+  }
+
+  .ds-sidebar--collapsed {
+    width: 96px;
+    padding: var(--spacing-6);
+    gap: var(--spacing-12);
+  }
+
+  /* ── Logo ── */
+  .ds-sidebar__logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ds-sidebar__logo > img,
+  .ds-sidebar__logo > [role="img"] svg {
+    height: 32px;
+    width: auto;
+  }
+
+  .ds-sidebar__menu-button {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-sidebar__menu-button .ds-btn__label {
+    display: inline-flex;
+  }
+
+  .ds-sidebar__logo-spacer {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__logo {
+    justify-content: center;
+  }
+
+  /* ── Nav ── */
+  .ds-sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ds-color-border) transparent;
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__nav {
+    align-items: center;
+  }
+
+  /* ── Footer ── */
+  .ds-sidebar__footer {
+    display: flex;
+    flex-direction: column;
+    border-top: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__footer {
+    align-items: center;
+  }
+
+  /* ── Watermark / decorative shape ── */
+  .ds-sidebar__watermark {
+    position: absolute;
+    bottom: 98px;
+    left: -128px;
+    width: 266px;
+    height: 411px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  .ds-sidebar__watermark svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── Collapsed: menu items show icon only ── */
+  .ds-sidebar--collapsed .ds-menu-item {
+    width: 44px;
+  }
+
+  .ds-sidebar--collapsed .ds-menu-item__label {
+    display: none;
+  }
+
+  .ds-sidebar--collapsed .ds-menu-item__label ~ .ds-menu-item__icon {
+    display: none;
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__sub-items {
+    display: none;
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__watermark {
+    left: -150px;
+    bottom: 60px;
+    width: 190px;
+    height: 293px;
+  }
+
+  .ds-sidebar--collapsed .ds-sidebar__section {
+    align-items: center;
+  }
+
+  /* ── Collapsible section ── */
+  .ds-sidebar__section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .ds-sidebar__sub-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+  }
+
+  .ds-sidebar__sub-items--open {
+    max-height: 600px;
+  }
+
+  .ds-sidebar__sub-items .ds-menu-item {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-3);
+  }
+
+  .ds-sidebar__sub-items .ds-menu-item--sub-active {
+    background: var(--ds-color-surface-selected);
+  }
+}

@@ -1,0 +1,129 @@
+/*
+ * Design System SM — Accordion Styles
+ *
+ * Figma specs:
+ *   Radius: radius-md (12px)
+ *   Header: 24px horizontal, 16px vertical, gap 12px
+ *   Content: 24px padding, 24px gap
+ *   Default: white bg, 1px neutral-200 border-bottom
+ *   Hover: brand-50 bg
+ *   Disabled: neutral-100 bg, 1px neutral-400 border
+ *   Text: Body L (20px) semibold
+ */
+
+@layer components {
+  .ds-accordion {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    width: 100%;
+  }
+
+  .ds-accordion--disabled {
+    background: var(--color-neutral-100);
+  }
+
+  /* ── Header ── */
+  .ds-accordion__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-6);
+    border: none;
+    border-bottom: var(--border-xs) solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    background: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    width: 100%;
+    text-align: left;
+  }
+
+  .ds-accordion__header--open {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .ds-accordion__header:hover:not(:disabled) {
+    background: var(--color-brand-50);
+  }
+
+  .ds-accordion__header:focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: -2px;
+  }
+
+  .ds-accordion__header:disabled {
+    cursor: not-allowed;
+    background: var(--color-neutral-100);
+    border-color: var(--color-neutral-400);
+  }
+
+  /* ── Icon ── */
+  .ds-accordion__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--color-neutral-900);
+  }
+
+  .ds-accordion--disabled .ds-accordion__icon {
+    color: var(--color-neutral-400);
+  }
+
+  /* ── Label ── */
+  .ds-accordion__label {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-950);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-accordion--disabled .ds-accordion__label {
+    color: var(--color-neutral-400);
+  }
+
+  /* ── Chevron ── */
+  .ds-accordion__chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--color-neutral-900);
+  }
+
+  .ds-accordion__chevron svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ds-accordion--disabled .ds-accordion__chevron {
+    color: var(--color-neutral-400);
+  }
+
+  /* ── Content ── */
+  .ds-accordion__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    padding: var(--spacing-6);
+    background: inherit;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .ds-accordion--disabled .ds-accordion__content {
+    border: var(--border-xs) solid var(--color-neutral-200);
+    border-top: none;
+  }
+}

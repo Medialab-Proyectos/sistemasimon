@@ -1,0 +1,205 @@
+/*
+ * Design System SM — Select Styles
+ *
+ * Figma specs:
+ *   Gap: 8px
+ *   Label: Body L (20px) regular
+ *   Input: 8px/16px padding, radius-sm (8px)
+ *   States: enable, completed, error, success, disabled
+ *   Focus ring: 4px shadow matching state color
+ */
+
+@layer components {
+  .ds-select {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    width: 100%;
+    position: relative;
+  }
+
+  /* ── Label row ── */
+  .ds-select__label-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ds-select__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+  }
+
+  .ds-select--disabled .ds-select__label {
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-select__required {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-error-500);
+  }
+
+  .ds-select__info-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--ds-color-text-muted);
+  }
+
+  /* ── Trigger / input ── */
+  .ds-select__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--ds-color-border);
+    background: var(--ds-color-surface);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .ds-select--open .ds-select__trigger {
+    box-shadow: 0 0 0 4px var(--ds-color-focus-ring);
+  }
+
+  .ds-select--completed .ds-select__trigger { border-color: var(--ds-color-border); }
+  .ds-select--completed.ds-select--open .ds-select__trigger {
+    border-color: var(--ds-color-border);
+    box-shadow: 0 0 0 4px var(--ds-color-focus-ring);
+  }
+
+  .ds-select--error .ds-select__trigger { border-color: var(--color-error-500); }
+  .ds-select--error.ds-select--open .ds-select__trigger {
+    box-shadow: 0 0 0 4px var(--color-error-50);
+  }
+
+  .ds-select--success .ds-select__trigger { border-color: var(--color-success-500); }
+  .ds-select--success.ds-select--open .ds-select__trigger {
+    box-shadow: 0 0 0 4px var(--color-success-50);
+  }
+
+  .ds-select--disabled .ds-select__trigger {
+    background: var(--ds-color-surface-alt);
+    border-color: var(--ds-color-border);
+    cursor: not-allowed;
+  }
+
+  /* ── Value ── */
+  .ds-select__value {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-select__value--placeholder {
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-select--disabled .ds-select__value {
+    color: var(--ds-color-text-muted);
+  }
+
+  /* ── Chevron ── */
+  .ds-select__chevron {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--ds-color-text-muted);
+  }
+
+  /* ── Dropdown ── */
+  .ds-select__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    margin-top: var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--ds-color-border);
+    background: var(--ds-color-surface);
+    box-shadow: var(--shadow-sm);
+    max-height: 240px;
+    overflow: hidden auto;
+  }
+
+  .ds-select__option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-4);
+    border: none;
+    border-bottom: var(--border-xs) solid var(--ds-color-border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+    text-align: left;
+  }
+
+  .ds-select__option:last-child {
+    border-bottom: none;
+  }
+
+  .ds-select__option:hover {
+    background: var(--ds-color-surface-hover);
+  }
+
+  .ds-select__option--selected {
+    background: var(--ds-color-surface-selected);
+    color: var(--ds-color-text);
+  }
+
+  /* ── Support text ── */
+  .ds-select__support {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .ds-select__support-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-select--error .ds-select__support-icon { color: var(--color-error-800); }
+  .ds-select--success .ds-select__support-icon { color: var(--color-success-800); }
+
+  .ds-select__support-text {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-select--error .ds-select__support-text { color: var(--color-error-800); }
+  .ds-select--success .ds-select__support-text { color: var(--color-success-800); }
+  .ds-select--disabled .ds-select__support-text { color: var(--color-neutral-400); }
+}

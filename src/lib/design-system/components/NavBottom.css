@@ -1,0 +1,94 @@
+/*
+ * Design System SM — NavBottom Styles
+ *
+ * Figma specs:
+ *   Mobile bottom navigation bar
+ *   Container: white bg, border-top neutral-200, fixed bottom
+ *   Items: 4-5 icon+label columns, equal width
+ *   Active: brand-400 icon+label
+ *   Inactive: neutral-400 icon+label
+ *   Icon: 24px, Label: Body SM
+ *   Height: 64px, safe-area padding
+ */
+
+@layer components {
+  .ds-nav-bottom {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 64px;
+    background: var(--color-white);
+    border-top: var(--border-xs) solid var(--color-neutral-200);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .ds-nav-bottom__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: var(--spacing-1);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-2) 0;
+    color: var(--color-neutral-400);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .ds-nav-bottom__item:hover {
+    color: var(--color-neutral-600);
+  }
+
+  .ds-nav-bottom__item--active {
+    color: var(--color-brand-400);
+  }
+
+  .ds-nav-bottom__item--active:hover {
+    color: var(--color-brand-600);
+  }
+
+  .ds-nav-bottom__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .ds-nav-bottom__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .ds-nav-bottom__item--active .ds-nav-bottom__label {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ds-nav-bottom__badge {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+    min-width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--color-error-500);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold);
+    padding: 0 4px;
+  }
+
+  .ds-nav-bottom__icon-wrap {
+    position: relative;
+    display: inline-flex;
+  }
+}

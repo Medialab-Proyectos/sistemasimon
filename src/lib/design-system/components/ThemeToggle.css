@@ -1,0 +1,55 @@
+@layer components {
+  .ds-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-theme-toggle__icon {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .ds-theme-toggle__icon[aria-pressed="true"] {
+    color: var(--ds-color-text);
+  }
+
+  .ds-theme-toggle__switch {
+    display: inline-flex;
+    align-items: center;
+    width: 38px;
+    height: 24px;
+    padding: 2px;
+    margin: 0 var(--spacing-2);
+    border-radius: 80px;
+    border: var(--border-xs) solid var(--ds-color-border);
+    background: var(--ds-color-surface);
+    cursor: pointer;
+  }
+
+  .ds-theme-toggle__switch span {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-lg);
+    background: var(--color-neutral-300);
+    transform: translateX(0);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  .ds-theme-toggle__switch--dark {
+    background: var(--color-neutral-800);
+  }
+
+  .ds-theme-toggle__switch--dark span {
+    background: var(--color-brand-400);
+    transform: translateX(14px);
+  }
+}

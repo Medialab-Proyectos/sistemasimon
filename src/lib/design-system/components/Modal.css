@@ -1,0 +1,153 @@
+/*
+ * Design System SM — Modal Styles
+ *
+ * Figma specs:
+ *   Border: 1px neutral-300, radius-md (12px)
+ *   Header: 16px padding, H6 bold
+ *   Body: 24px padding, 24px gap
+ *   Footer: 16px padding, right-aligned buttons
+ */
+
+@layer components {
+  .ds-modal {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-md);
+    border: var(--border-xs) solid var(--color-neutral-300);
+    background: var(--color-white);
+    overflow: hidden;
+    width: 100%;
+    max-width: 623px;
+  }
+
+  /* ── Header ── */
+  .ds-modal__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .ds-modal__title {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-h6-size);
+    line-height: var(--text-h6-line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-950);
+  }
+
+  .ds-modal__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--color-neutral-400);
+  }
+
+  .ds-modal__close:hover {
+    color: var(--color-neutral-700);
+  }
+
+  /* ── Body ── */
+  .ds-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-6);
+    overflow: hidden;
+  }
+
+  .ds-modal__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: var(--color-error-500);
+  }
+
+  .ds-modal__subtitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    margin: 0;
+    width: 100%;
+  }
+
+  .ds-modal__text {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    margin: 0;
+    width: 100%;
+  }
+
+  /* ── Footer ── */
+  .ds-modal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-6);
+    padding: var(--spacing-4);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .ds-modal__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    min-height: 40px;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-full);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-800);
+  }
+
+  .ds-modal__btn-secondary:hover {
+    opacity: 0.8;
+  }
+
+  .ds-modal__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-full);
+    border: none;
+    background: linear-gradient(110deg, var(--color-brand-400), var(--color-brand-700));
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-950);
+  }
+
+  .ds-modal__btn-primary:hover {
+    opacity: 0.9;
+  }
+}

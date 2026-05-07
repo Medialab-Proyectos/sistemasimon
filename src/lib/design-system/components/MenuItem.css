@@ -1,0 +1,93 @@
+/*
+ * Design System SM — MenuItem Styles
+ *
+ * Figma specs:
+ *   Padding: 12px
+ *   Gap: 8px
+ *   Radius: radius-sm (8px)
+ *   Enable: white bg, neutral-400 text
+ *   Hover: brand-50 bg
+ *   Selected: gradient brand-400 → brand-50, brand-950 text
+ */
+
+@layer components {
+  .ds-menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    width: 220px;
+    padding: var(--spacing-3);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--ds-color-surface);
+    cursor: pointer;
+    overflow: hidden;
+    text-align: left;
+    transition: background 0.15s ease;
+  }
+
+  .ds-menu-item:hover:not(:disabled):not(.ds-menu-item--selected) {
+    background: var(--ds-color-surface-hover);
+  }
+
+  .ds-menu-item:focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+
+  .ds-menu-item:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .ds-menu-item--hover {
+    background: var(--ds-color-surface-hover);
+  }
+
+  .ds-menu-item--selected {
+    background: linear-gradient(
+      90deg,
+      var(--ds-color-menu-selected-from),
+      var(--ds-color-menu-selected-to)
+    );
+  }
+
+  /* ── Icon ── */
+  .ds-menu-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-menu-item--selected .ds-menu-item__icon {
+    color: var(--ds-color-brand-contrast);
+  }
+
+  /* ── Label ── */
+  .ds-menu-item__label {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-menu-item--selected .ds-menu-item__label {
+    color: var(--ds-color-brand-contrast);
+  }
+
+  /* ── Sub-item active (used inside collapsible sections) ── */
+  .ds-menu-item--sub-active {
+    background: var(--ds-color-surface-selected);
+  }
+
+  .ds-menu-item--sub-active .ds-menu-item__label {
+    color: var(--ds-color-text-muted);
+  }
+}

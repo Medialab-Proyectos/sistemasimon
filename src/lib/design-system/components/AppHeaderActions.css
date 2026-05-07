@@ -1,0 +1,21 @@
+@layer components {
+  .ds-app-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    color: var(--ds-color-text-muted);
+  }
+
+  .ds-app-header-actions__notification {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    color: var(--ds-color-text-muted);
+    padding: 0;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+  }
+}

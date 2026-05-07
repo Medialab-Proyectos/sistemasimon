@@ -1,0 +1,96 @@
+/*
+ * Design System SM — Checkbox Styles
+ *
+ * Figma specs:
+ *   Box: 20x20px, radius-xs (4px)
+ *   Unchecked: 2px neutral-200 border, white fill
+ *   Checked: brand-400 fill, white checkmark
+ *   Indeterminate: brand-400 fill, white dash
+ */
+
+@layer components {
+  .ds-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .ds-checkbox--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ── Box container ── */
+  .ds-checkbox__box {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ── Native input (visually hidden) ── */
+  .ds-checkbox__input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: var(--border-sm) solid var(--color-neutral-200);
+    border-radius: var(--radius-xs);
+    background: var(--color-white);
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.15s ease;
+  }
+
+  .ds-checkbox__input:hover {
+    border-color: var(--color-brand-400);
+  }
+
+  .ds-checkbox__input:focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+
+  .ds-checkbox__input:checked,
+  .ds-checkbox__input:indeterminate {
+    background: var(--color-brand-400);
+    border-color: var(--color-brand-400);
+  }
+
+  /* ── Check icon ── */
+  .ds-checkbox__check,
+  .ds-checkbox__indeterminate {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    color: var(--color-white);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .ds-checkbox__input:checked ~ .ds-checkbox__check {
+    opacity: 1;
+  }
+
+  .ds-checkbox__input:indeterminate ~ .ds-checkbox__indeterminate {
+    opacity: 1;
+  }
+
+  .ds-checkbox__input:indeterminate ~ .ds-checkbox__check {
+    opacity: 0;
+  }
+
+  /* ── Label ── */
+  .ds-checkbox__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+  }
+}

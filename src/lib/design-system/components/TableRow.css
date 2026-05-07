@@ -1,0 +1,59 @@
+/*
+ * Design System SM — TableRow Styles
+ *
+ * Figma specs:
+ *   Header: neutral-50 bg, semibold
+ *   Normal: white (odd), neutral-50 (even)
+ *   Padding: 12px 16px per cell
+ *   Border-bottom: 1px neutral-200
+ */
+
+@layer components {
+  .ds-table-row {
+    background: var(--ds-color-surface);
+    border-bottom: var(--border-xs) solid var(--ds-color-border);
+  }
+
+  .ds-table-row--even {
+    background: var(--ds-color-surface-alt);
+  }
+
+  .ds-table-row--header {
+    background: var(--ds-color-surface-alt);
+  }
+
+  .ds-table-row--selected {
+    background: var(--ds-color-surface-selected);
+  }
+
+  .ds-table-row td,
+  .ds-table-row th {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--ds-color-text);
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .ds-table-row--header th {
+    font-weight: var(--font-weight-semibold);
+    color: var(--ds-color-text);
+  }
+
+  .ds-table-row__check {
+    width: 40px;
+    text-align: center;
+  }
+
+  .ds-table-row__actions {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .ds-table-row__status {
+    text-align: center;
+  }
+}

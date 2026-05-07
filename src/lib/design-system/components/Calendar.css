@@ -1,0 +1,262 @@
+/*
+ * Design System SM — Calendar Styles
+ *
+ * Figma specs:
+ *   Variants: Dia (day picker), Calendario+hora (date+time), Mes (month picker)
+ *   Container: white bg, radius-sm, shadow-sm, border neutral-200
+ *   Header: month/year nav with arrows, Body L semibold
+ *   Day grid: 7 columns, 40px cells
+ *   Selected: brand-400 bg, white text
+ *   Today: brand-50 bg, brand-800 text
+ *   Disabled: neutral-300 text
+ *   Range: brand-50 bg between endpoints
+ */
+
+@layer components {
+  .ds-calendar {
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-4);
+    width: 320px;
+    font-family: var(--font-body);
+  }
+
+  /* ── Header ── */
+  .ds-calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--spacing-3);
+  }
+
+  .ds-calendar__title {
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    text-transform: capitalize;
+  }
+
+  .ds-calendar__nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: var(--radius-xs);
+    color: var(--color-neutral-600);
+    transition: background 0.15s ease;
+  }
+
+  .ds-calendar__nav:hover {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+  }
+
+  /* ── Weekday labels ── */
+  .ds-calendar__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    margin-bottom: var(--spacing-1);
+  }
+
+  .ds-calendar__weekday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-400);
+    text-transform: uppercase;
+  }
+
+  /* ── Day grid ── */
+  .ds-calendar__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+  }
+
+  .ds-calendar__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    height: 40px;
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .ds-calendar__day:hover {
+    background: var(--color-neutral-100);
+  }
+
+  .ds-calendar__day--today {
+    background: var(--color-brand-50);
+    color: var(--color-brand-800);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ds-calendar__day--selected {
+    background: var(--color-brand-400);
+    color: var(--color-white);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ds-calendar__day--selected:hover {
+    background: var(--color-brand-600);
+  }
+
+  .ds-calendar__day--range {
+    background: var(--color-brand-50);
+    border-radius: 0;
+  }
+
+  .ds-calendar__day--range-start {
+    border-radius: var(--radius-xs) 0 0 var(--radius-xs);
+  }
+
+  .ds-calendar__day--range-end {
+    border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  }
+
+  .ds-calendar__day--outside {
+    color: var(--color-neutral-300);
+  }
+
+  .ds-calendar__day--disabled {
+    color: var(--color-neutral-300);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* ── Month grid (Mes variant) ── */
+  .ds-calendar__months {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-2);
+  }
+
+  .ds-calendar__month {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    padding: 0;
+    text-transform: capitalize;
+    transition: background 0.15s ease;
+  }
+
+  .ds-calendar__month:hover {
+    background: var(--color-neutral-100);
+  }
+
+  .ds-calendar__month--selected {
+    background: var(--color-brand-400);
+    color: var(--color-white);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ds-calendar__month--current {
+    background: var(--color-brand-50);
+    color: var(--color-brand-800);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* ── Time section (Calendario+hora variant) ── */
+  .ds-calendar__time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    padding-top: var(--spacing-3);
+    border-top: var(--border-xs) solid var(--color-neutral-200);
+    margin-top: var(--spacing-3);
+  }
+
+  .ds-calendar__time-input {
+    width: 56px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: var(--text-body-l-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    border-radius: var(--radius-xs);
+    padding: var(--spacing-2);
+    background: var(--color-white);
+  }
+
+  .ds-calendar__time-input:focus {
+    outline: none;
+    border-color: var(--color-brand-400);
+    box-shadow: 0 0 0 4px var(--color-brand-50);
+  }
+
+  .ds-calendar__time-sep {
+    font-size: var(--text-body-l-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  .ds-calendar__time-period {
+    display: inline-flex;
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+    border: var(--border-xs) solid var(--color-neutral-200);
+  }
+
+  .ds-calendar__time-period-btn {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-600);
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .ds-calendar__time-period-btn--active {
+    background: var(--color-brand-400);
+    color: var(--color-white);
+  }
+
+  /* ── Footer ── */
+  .ds-calendar__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-2);
+    padding-top: var(--spacing-3);
+    border-top: var(--border-xs) solid var(--color-neutral-200);
+    margin-top: var(--spacing-3);
+  }
+}

@@ -1,0 +1,169 @@
+/*
+ * Design System SM — Uploader Styles
+ *
+ * Figma specs:
+ *   Radius: radius-sm (8px), padding 24px
+ *   Enable: dashed border, neutral-200
+ *   Loading: progress bar, brand-400
+ *   Success: solid border, success-500
+ *   Error: solid border, error-500
+ */
+
+@layer components {
+  .ds-uploader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    border-radius: var(--radius-sm);
+    border: var(--border-sm) dashed var(--color-neutral-200);
+    background: var(--color-white);
+    padding: var(--spacing-6);
+    width: 100%;
+    transition: border-color 0.15s ease;
+  }
+
+  .ds-uploader:hover {
+    border-color: var(--color-brand-400);
+  }
+
+  .ds-uploader--loading,
+  .ds-uploader--success,
+  .ds-uploader--error,
+  .ds-uploader--preview {
+    border-style: solid;
+    padding: var(--spacing-4);
+  }
+
+  .ds-uploader--success { border-color: var(--color-success-500); }
+  .ds-uploader--error { border-color: var(--color-error-500); }
+  .ds-uploader--loading { border-color: var(--color-brand-400); }
+
+  /* ── Dropzone ── */
+  .ds-uploader__dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    cursor: pointer;
+  }
+
+  .ds-uploader__icon {
+    display: inline-flex;
+    color: var(--color-neutral-400);
+  }
+
+  .ds-uploader__hint {
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+    text-align: center;
+  }
+
+  /* ── File info ── */
+  .ds-uploader__file {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    width: 100%;
+  }
+
+  .ds-uploader__file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .ds-uploader__file-icon--success { color: var(--color-success-500); }
+  .ds-uploader__file-icon--error { color: var(--color-error-500); }
+
+  .ds-uploader__file-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-uploader__file-name {
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-uploader__file-size {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+    flex-shrink: 0;
+  }
+
+  .ds-uploader__error-msg {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-error-500);
+  }
+
+  /* ── Progress ── */
+  .ds-uploader__progress {
+    width: 100%;
+    height: 4px;
+    background: var(--color-neutral-100);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: var(--spacing-2);
+  }
+
+  .ds-uploader__progress-bar {
+    height: 100%;
+    background: var(--color-brand-400);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  /* ── Buttons ── */
+  .ds-uploader__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--color-neutral-400);
+  }
+
+  .ds-uploader__remove:hover { color: var(--color-error-500); }
+
+  .ds-uploader__retry {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-800);
+    flex-shrink: 0;
+  }
+
+  .ds-uploader__retry:hover { text-decoration: underline; }
+}

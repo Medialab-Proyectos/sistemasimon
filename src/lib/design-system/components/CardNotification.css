@@ -1,0 +1,121 @@
+/*
+ * Design System SM — CardNotification Styles
+ *
+ * Figma specs:
+ *   Padding: 16px, gap 8px
+ *   Radius: radius-md (12px)
+ *   Border: 1px neutral-50
+ *   Icon: 48px circle
+ *     Email: warning-50 bg
+ *     Notification: brand-50 bg
+ *   Body: Body (16px) regular
+ *   Time: Body L (20px) regular, neutral-400
+ *   Badge: brand-50 bg, brand-800 text, radius-xs (4px)
+ */
+
+@layer components {
+  .ds-card-notif {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-md);
+    border: var(--border-xs) solid var(--color-neutral-50);
+    background: var(--color-white);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* ── Row ── */
+  .ds-card-notif__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+    width: 100%;
+  }
+
+  /* ── Icon ── */
+  .ds-card-notif__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 32px;
+  }
+
+  .ds-card-notif__icon--email {
+    background: var(--color-warning-50);
+    color: var(--color-warning-700);
+  }
+
+  .ds-card-notif__icon--notification {
+    background: var(--color-brand-50);
+    color: var(--color-brand-800);
+  }
+
+  .ds-card-notif__svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ── Body ── */
+  .ds-card-notif__body {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .ds-card-notif__text {
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 0;
+  }
+
+  /* ── Meta (time + badge) ── */
+  .ds-card-notif__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+    width: 80px;
+    align-self: stretch;
+  }
+
+  .ds-card-notif__time {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg-size);
+    line-height: var(--text-body-lg-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+  }
+
+  .ds-card-notif__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-xs);
+    background: var(--color-brand-50);
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-800);
+    white-space: nowrap;
+  }
+}

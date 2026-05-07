@@ -1,0 +1,36 @@
+/*
+ * Design System SM — Dropdown Styles
+ *
+ * Figma specs:
+ *   Container: white bg, 1px neutral-200, radius-sm, shadow-sm
+ */
+
+@layer components {
+  .ds-dropdown {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .ds-dropdown__trigger {
+    cursor: pointer;
+  }
+
+  .ds-dropdown__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+}

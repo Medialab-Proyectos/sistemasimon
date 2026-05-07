@@ -1,0 +1,78 @@
+/*
+ * Design System SM — AppShell Template Styles
+ *
+ * Figma specs:
+ *   Main application layout shell
+ *   Background: #f6f6f6 (software bg)
+ *   Sidebar: left, padded 24px, contains Sidebar component
+ *   NavBar: top-right, 80px height
+ *   Content: below navbar, flexible
+ *   All inner panels: radius-lg (16px), white bg
+ */
+
+@layer components {
+  .ds-app-shell {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--ds-color-app-bg);
+    font-family: var(--font-body);
+  }
+
+  /* ── Sidebar area ── */
+  .ds-app-shell__sidebar {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-6);
+    flex-shrink: 0;
+  }
+
+  /* ── Main area (navbar + content) ── */
+  .ds-app-shell__main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: var(--spacing-6) var(--spacing-6) var(--spacing-6) 0;
+    gap: var(--spacing-6);
+  }
+
+  /* ── NavBar wrapper ── */
+  .ds-app-shell__navbar {
+    flex-shrink: 0;
+  }
+
+  /* ── Content area ── */
+  .ds-app-shell__content {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    gap: var(--spacing-6);
+  }
+
+  /* ── Panel (white card container) ── */
+  .ds-app-shell__panel {
+    border-radius: var(--radius-lg);
+    background: var(--ds-color-surface);
+    overflow: hidden;
+  }
+
+  .ds-app-shell__panel--flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-app-shell__panel--fixed {
+    flex-shrink: 0;
+  }
+
+  .ds-app-shell__panel--padded {
+    padding: var(--spacing-6);
+  }
+
+  .ds-app-shell__panel--scroll {
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,74 @@
+/*
+ * Design System SM — NavBar Styles
+ *
+ * Figma specs:
+ *   Padding: 16px horizontal, 8px vertical
+ *   Background: white
+ *   Border-bottom: 1px neutral-200
+ *   Layout: space-between
+ */
+
+@layer components {
+  .ds-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-6);
+    background: var(--color-white);
+    border-bottom: 0;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    min-height: 80px;
+    gap: var(--spacing-3);
+    overflow: hidden;
+  }
+
+  .ds-navbar--mobile {
+    padding: var(--spacing-3);
+    min-height: 48px;
+    border-radius: var(--radius-md);
+  }
+
+  /* ── Left ── */
+  .ds-navbar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-navbar__logo {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ds-navbar__logo img,
+  .ds-navbar__logo svg {
+    height: 32px;
+    width: auto;
+  }
+
+  .ds-navbar--mobile .ds-navbar__logo img,
+  .ds-navbar--mobile .ds-navbar__logo svg {
+    height: 24px;
+  }
+
+  /* ── Center ── */
+  .ds-navbar__center {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  /* ── Right ── */
+  .ds-navbar__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    flex-shrink: 0;
+  }
+}

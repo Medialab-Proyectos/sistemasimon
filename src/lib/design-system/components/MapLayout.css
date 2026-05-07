@@ -1,0 +1,56 @@
+/*
+ * Design System SM — MapLayout Template Styles
+ *
+ * Figma specs:
+ *   Map view: map area (flex, rounded-lg) + side panel (349px)
+ *   Side panel: white bg, radius-lg, scrollable cards, bottom buttons
+ *   Map: full height, rounded-lg, position relative for markers
+ */
+
+@layer components {
+  .ds-map-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-6);
+    min-height: 0;
+  }
+
+  .ds-map-layout__map {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: var(--color-white);
+  }
+
+  .ds-map-layout__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    width: 349px;
+    flex-shrink: 0;
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    padding: var(--spacing-6);
+    font-family: var(--font-body);
+  }
+
+  .ds-map-layout__cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .ds-map-layout__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    flex-shrink: 0;
+  }
+}

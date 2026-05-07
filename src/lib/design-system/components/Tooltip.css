@@ -1,0 +1,154 @@
+/*
+ * Design System SM — Tooltip Styles
+ *
+ * Figma specs:
+ *   Background: neutral-50 (#F6F6F6)
+ *   Border radius: radius-sm (8px)
+ *   Padding: 12px
+ *   Gap: 4px between header/body
+ *   Backdrop blur: 15px
+ *   Max width: 316px
+ *   Arrow: 6px CSS triangle
+ */
+
+@layer components {
+  .ds-tooltip {
+    display: inline-flex;
+    max-width: 316px;
+    position: relative;
+    backdrop-filter: blur(15px);
+  }
+
+  /* ── Direction layout ── */
+  .ds-tooltip--down,
+  .ds-tooltip--up {
+    flex-direction: column;
+  }
+
+  .ds-tooltip--up {
+    flex-direction: column-reverse;
+  }
+
+  .ds-tooltip--horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .ds-tooltip--left {
+    flex-direction: row-reverse;
+  }
+
+  /* ── Alignment ── */
+  .ds-tooltip--align-start {
+    align-items: flex-start;
+  }
+
+  .ds-tooltip--align-center {
+    align-items: center;
+  }
+
+  .ds-tooltip--align-end {
+    align-items: flex-end;
+  }
+
+  .ds-tooltip--horizontal.ds-tooltip--align-start,
+  .ds-tooltip--horizontal.ds-tooltip--align-center,
+  .ds-tooltip--horizontal.ds-tooltip--align-end {
+    align-items: center;
+  }
+
+  /* ── Content ── */
+  .ds-tooltip__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    padding: var(--spacing-3);
+    background: var(--color-neutral-50);
+    border-radius: var(--radius-sm);
+    width: 100%;
+  }
+
+  .ds-tooltip--horizontal .ds-tooltip__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-tooltip__header {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-950);
+    margin: 0;
+  }
+
+  .ds-tooltip__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-900);
+    margin: 0;
+  }
+
+  /* ── Arrow ── */
+  .ds-tooltip__arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    flex-shrink: 0;
+  }
+
+  /* Bottom arrows (pointing down) */
+  .ds-tooltip__arrow--bottom-center,
+  .ds-tooltip__arrow--bottom-left,
+  .ds-tooltip__arrow--bottom-right {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-neutral-50);
+    align-self: center;
+  }
+
+  .ds-tooltip__arrow--bottom-left {
+    align-self: flex-start;
+    margin-left: 24px;
+  }
+
+  .ds-tooltip__arrow--bottom-right {
+    align-self: flex-end;
+    margin-right: 24px;
+  }
+
+  /* Up arrows (pointing up) */
+  .ds-tooltip__arrow--up-center,
+  .ds-tooltip__arrow--up-left,
+  .ds-tooltip__arrow--up-right {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid var(--color-neutral-50);
+    align-self: center;
+  }
+
+  .ds-tooltip__arrow--up-left {
+    align-self: flex-start;
+    margin-left: 24px;
+  }
+
+  .ds-tooltip__arrow--up-right {
+    align-self: flex-end;
+    margin-right: 24px;
+  }
+
+  /* Side arrows */
+  .ds-tooltip__arrow--right {
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid var(--color-neutral-50);
+  }
+
+  .ds-tooltip__arrow--left {
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid var(--color-neutral-50);
+  }
+}

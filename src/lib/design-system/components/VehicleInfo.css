@@ -1,0 +1,132 @@
+/*
+ * Design System SM — VehicleInfo Styles
+ *
+ * Figma specs:
+ *   Info Vehiculo corporativo / Info Vehiculo refactor
+ *   Detail panel for vehicle information
+ *   Container: white bg, radius-sm, border neutral-200
+ *   Header: vehicle name + status indicator
+ *   Sections: grouped info fields
+ *   Fields: label (neutral-400) + value (neutral-900) pairs
+ *   Dividers: 1px neutral-100 between sections
+ */
+
+@layer components {
+  .ds-vehicle-info {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    font-family: var(--font-body);
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .ds-vehicle-info__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+    border-bottom: var(--border-xs) solid var(--color-neutral-100);
+  }
+
+  .ds-vehicle-info__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-xs);
+    background: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .ds-vehicle-info__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ds-vehicle-info__header-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-vehicle-info__name {
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-900);
+  }
+
+  .ds-vehicle-info__subtitle {
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  /* ── Section ── */
+  .ds-vehicle-info__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+
+  .ds-vehicle-info__section + .ds-vehicle-info__section {
+    border-top: var(--border-xs) solid var(--color-neutral-100);
+  }
+
+  .ds-vehicle-info__section-title {
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Field ── */
+  .ds-vehicle-info__field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-2);
+  }
+
+  .ds-vehicle-info__field-label {
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+    flex-shrink: 0;
+  }
+
+  .ds-vehicle-info__field-value {
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    text-align: right;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ── Footer ── */
+  .ds-vehicle-info__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+    border-top: var(--border-xs) solid var(--color-neutral-100);
+  }
+}

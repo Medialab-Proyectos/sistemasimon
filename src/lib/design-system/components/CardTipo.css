@@ -1,0 +1,82 @@
+/*
+ * Design System SM — CardTipo Styles
+ *
+ * Figma specs:
+ *   Generic type card for categorization
+ *   Container: white bg, radius-sm, border neutral-200
+ *   Icon container: 48px circle, brand-50 bg
+ *   Title: Body L semibold, neutral-900
+ *   Description: Body SM regular, neutral-400
+ *   States: default, selected (brand-400 border + brand-50 bg)
+ */
+
+@layer components {
+  .ds-card-tipo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .ds-card-tipo:hover {
+    border-color: var(--color-brand-200);
+    background: var(--color-neutral-50);
+  }
+
+  .ds-card-tipo--selected {
+    border-color: var(--color-brand-400);
+    background: var(--color-brand-50);
+  }
+
+  .ds-card-tipo__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: var(--color-brand-50);
+    color: var(--color-brand-400);
+    flex-shrink: 0;
+  }
+
+  .ds-card-tipo--selected .ds-card-tipo__icon {
+    background: var(--color-brand-100);
+    color: var(--color-brand-600);
+  }
+
+  .ds-card-tipo__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-card-tipo__title {
+    font-family: var(--font-body);
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  .ds-card-tipo__desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-card-tipo__arrow {
+    display: inline-flex;
+    color: var(--color-neutral-300);
+    flex-shrink: 0;
+  }
+}

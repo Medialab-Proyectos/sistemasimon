@@ -1,0 +1,137 @@
+/*
+ * Design System SM — Button Styles
+ *
+ * Figma specs:
+ *   Principal: gradient bg (brand-400 → brand-600), white text
+ *   Secundario: 2px border brand-800, transparent bg, brand-800 text
+ *   Ghost: transparent bg, brand-800 text
+ *   Pill shape: radius-full (120px)
+ *   Sizes: S=40px/16px, M=48px/20px, L=60px/24px
+ */
+
+@layer components {
+  /* ── Base ── */
+  .ds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    outline: none;
+    position: relative;
+  }
+
+  .ds-btn:focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+
+  /* ── Sizes ── */
+  .ds-btn--sm {
+    height: 40px;
+    padding: 0 var(--spacing-5);
+    font-size: 1rem;       /* 16px */
+    line-height: 1rem;
+  }
+
+  .ds-btn--md {
+    height: 48px;
+    padding: 0 var(--spacing-6);
+    font-size: 1.25rem;    /* 20px */
+    line-height: 1.25rem;
+  }
+
+  .ds-btn--lg {
+    height: 60px;
+    padding: 0 var(--spacing-8);
+    font-size: 1.5rem;     /* 24px */
+    line-height: 1.5rem;
+  }
+
+  /* ── Principal (gradient) ── */
+  .ds-btn--principal {
+    background: linear-gradient(135deg, var(--color-brand-400), var(--color-brand-600));
+    color: var(--color-white);
+  }
+
+  .ds-btn--principal:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--color-brand-300), var(--color-brand-500));
+    box-shadow: var(--shadow-xs);
+  }
+
+  .ds-btn--principal:active:not(:disabled) {
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
+  }
+
+  /* ── Secundario (outlined) ── */
+  .ds-btn--secundario {
+    background: transparent;
+    color: var(--ds-color-brand-text);
+    border: var(--border-sm) solid var(--ds-color-brand-text);
+  }
+
+  .ds-btn--secundario:hover:not(:disabled) {
+    background: var(--ds-color-surface-hover);
+  }
+
+  .ds-btn--secundario:active:not(:disabled) {
+    background: var(--ds-color-surface-selected);
+  }
+
+  /* ── Ghost ── */
+  .ds-btn--ghost {
+    background: transparent;
+    color: var(--ds-color-brand-text);
+  }
+
+  .ds-btn--ghost:hover:not(:disabled) {
+    background: var(--ds-color-surface-hover);
+  }
+
+  .ds-btn--ghost:active:not(:disabled) {
+    background: var(--ds-color-surface-selected);
+  }
+
+  /* ── Disabled ── */
+  .ds-btn--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ── Icon slot ── */
+  .ds-btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ds-btn--sm .ds-btn__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ds-btn--md .ds-btn__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ds-btn--lg .ds-btn__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ── Label ── */
+  .ds-btn__label {
+    display: inline-flex;
+    align-items: center;
+  }
+}

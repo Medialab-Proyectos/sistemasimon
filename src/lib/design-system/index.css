@@ -1,0 +1,13 @@
+/*
+ * Design System SM — Entry Point
+ *
+ * Import this single file to get all design system foundations.
+ * Compatible with Tailwind CSS v4.
+ *
+ * Usage in your app:
+ *   @import "./lib/design-system/index.css";
+ */
+
+@import "./tokens.css";
+@import "./typography.css";
+@import "./components/components.css";

@@ -1,0 +1,125 @@
+/*
+ * Design System SM — VehiculoApp Styles
+ *
+ * Figma specs:
+ *   Mobile app vehicle card (Vehiculo App)
+ *   Compact card for mobile vehicle list
+ *   Container: white bg, radius-sm, border neutral-200
+ *   Left: vehicle image/icon (48px)
+ *   Center: name + plate + status
+ *   Right: chevron or quick actions
+ *   Touch-friendly: min-height 64px
+ */
+
+@layer components {
+  .ds-vehiculo-app {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    font-family: var(--font-body);
+    min-height: 64px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .ds-vehiculo-app:hover {
+    background: var(--color-neutral-50);
+  }
+
+  .ds-vehiculo-app:active {
+    background: var(--color-neutral-100);
+  }
+
+  .ds-vehiculo-app--selected {
+    border-color: var(--color-brand-400);
+    background: var(--color-brand-50);
+  }
+
+  /* ── Image ── */
+  .ds-vehiculo-app__image {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-xs);
+    background: var(--color-neutral-50);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .ds-vehiculo-app__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ── Body ── */
+  .ds-vehiculo-app__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-vehiculo-app__name {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-vehiculo-app__plate {
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-vehiculo-app__status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ds-vehiculo-app__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+  }
+
+  .ds-vehiculo-app__status--available .ds-vehiculo-app__status-dot { background: var(--color-success-500); }
+  .ds-vehiculo-app__status--available { color: var(--color-success-500); }
+
+  .ds-vehiculo-app__status--in-use .ds-vehiculo-app__status-dot { background: var(--color-brand-400); }
+  .ds-vehiculo-app__status--in-use { color: var(--color-brand-400); }
+
+  .ds-vehiculo-app__status--offline .ds-vehiculo-app__status-dot { background: var(--color-neutral-300); }
+  .ds-vehiculo-app__status--offline { color: var(--color-neutral-400); }
+
+  .ds-vehiculo-app__status--alert .ds-vehiculo-app__status-dot { background: var(--color-error-500); }
+  .ds-vehiculo-app__status--alert { color: var(--color-error-500); }
+
+  /* ── Right ── */
+  .ds-vehiculo-app__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+  }
+
+  .ds-vehiculo-app__chevron {
+    display: inline-flex;
+    color: var(--color-neutral-300);
+  }
+}

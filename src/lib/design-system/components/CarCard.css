@@ -1,0 +1,118 @@
+/*
+ * Design System SM — CarCard (CAR_CARD / Carro) Styles
+ *
+ * Figma specs:
+ *   Vehicle summary card for lists/grids
+ *   Container: white bg, radius-sm, border neutral-200
+ *   Vehicle image: top section, neutral-50 bg, contained
+ *   Status dot: colored circle indicator
+ *   Name: Body L semibold
+ *   Details: Body SM, key-value rows
+ *   Footer: actions or status info
+ */
+
+@layer components {
+  .ds-car-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    font-family: var(--font-body);
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .ds-car-card:hover {
+    border-color: var(--color-neutral-300);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ds-car-card--selected {
+    border-color: var(--color-brand-400);
+  }
+
+  /* ── Image ── */
+  .ds-car-card__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background: var(--color-neutral-50);
+    padding: var(--spacing-3);
+    position: relative;
+  }
+
+  .ds-car-card__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .ds-car-card__status-dot {
+    position: absolute;
+    top: var(--spacing-3);
+    right: var(--spacing-3);
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    border: 2px solid var(--color-white);
+  }
+
+  .ds-car-card__status-dot--available { background: var(--color-success-500); }
+  .ds-car-card__status-dot--in-use { background: var(--color-brand-400); }
+  .ds-car-card__status-dot--maintenance { background: var(--color-warning-500); }
+  .ds-car-card__status-dot--offline { background: var(--color-neutral-300); }
+
+  /* ── Body ── */
+  .ds-car-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .ds-car-card__name {
+    font-size: var(--text-body-l-size);
+    line-height: var(--text-body-l-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-car-card__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+
+  .ds-car-card__detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-2);
+  }
+
+  .ds-car-card__detail-label {
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-car-card__detail-value {
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  /* ── Footer ── */
+  .ds-car-card__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-top: var(--border-xs) solid var(--color-neutral-100);
+  }
+}

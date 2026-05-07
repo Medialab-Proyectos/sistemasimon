@@ -1,0 +1,111 @@
+/*
+ * Design System SM — SpeedCard (Velocidad) Styles
+ *
+ * Figma specs:
+ *   Speed/velocity display card
+ *   Container: white bg, radius-sm, border neutral-200
+ *   Gauge: circular speed indicator, color-coded
+ *   Value: H3 bold, center
+ *   Unit: Body SM, neutral-400
+ *   Label: Body SM semibold
+ *   Color zones: success (normal), warning (medium), error (high)
+ */
+
+@layer components {
+  .ds-speed-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-xs) solid var(--color-neutral-200);
+    background: var(--color-white);
+    font-family: var(--font-body);
+  }
+
+  .ds-speed-card__gauge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+  }
+
+  .ds-speed-card__gauge-circle {
+    position: absolute;
+    inset: 0;
+  }
+
+  .ds-speed-card__gauge-bg {
+    fill: none;
+    stroke: var(--color-neutral-100);
+    stroke-width: 6;
+  }
+
+  .ds-speed-card__gauge-fill {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+  }
+
+  .ds-speed-card__gauge-fill--normal { stroke: var(--color-success-500); }
+  .ds-speed-card__gauge-fill--warning { stroke: var(--color-warning-500); }
+  .ds-speed-card__gauge-fill--danger { stroke: var(--color-error-500); }
+
+  .ds-speed-card__value-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .ds-speed-card__value {
+    font-size: var(--text-h4-size);
+    line-height: 1;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-900);
+  }
+
+  .ds-speed-card__unit {
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+
+  .ds-speed-card__label {
+    font-size: var(--text-body-sm-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-600);
+    text-align: center;
+  }
+
+  .ds-speed-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    width: 100%;
+  }
+
+  .ds-speed-card__meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: var(--spacing-1);
+  }
+
+  .ds-speed-card__meta-value {
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  .ds-speed-card__meta-label {
+    font-size: 12px;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-neutral-400);
+  }
+}
